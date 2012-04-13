@@ -97,3 +97,43 @@ sub super {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+class -
+
+=head1 SYNOPSIS
+
+  use class;
+
+  class 'Foo' => (
+    bar => sub { 'baz' },
+  );
+  my $foo = Foo->new;
+  say $foo->bar; # baz
+
+  class 'Hoo < Foo' => (
+    property => ['hoge'],
+  );
+  my $hoo = Hoo->new(hoge => 'fuga');
+	say $hoo->bar; # baz
+	say $hoo->hoge; # fuga
+
+=head1 DESCRIPTION
+
+This module is to create a class using "class" instead of "package",
+like Ruby.
+
+=head1 AUTHOR
+
+rightgo09 E<lt>skyarrow09@gmail.comE<gt>
+
+=head1 SEE ALSO
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

@@ -1,1 +1,31 @@
-In Perl5, to create a class using "class" instead of "package", like Ruby.
+This is Perl module "class".
+
+NAME
+    class
+
+SYNOPSIS
+    use class;
+
+    class 'Foo' => (
+        bar => sub { 'baz' },
+    );
+    my $foo = Foo->new;
+    say $foo->bar; # baz
+
+    class 'Hoo < Foo' => (
+        property => ['hoge'],
+    );
+    my $hoo = Hoo->new(hoge => 'fuga');
+    say $hoo->bar; # baz
+    say $hoo->hoge; # fuga
+
+DESCRIPTION
+    This module is to create a class using "class" instead of "package",
+    like Ruby.
+
+AUTHOR
+    rightgo09
+
+LICENSE
+    This library is free software; you can redistribute it and/or modify
+    it under the same terms as Perl itself.
