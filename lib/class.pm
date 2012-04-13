@@ -14,7 +14,6 @@ sub import {
 
 	*{"$pkg\::class"} = sub {
 		my $klass = shift(@_);
-		my @isa;
 
 		# If class name contains "<",
 		$klass =~ s/(\w+)(?:\s*<\s*(\w+))?/$1/;
