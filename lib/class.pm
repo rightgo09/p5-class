@@ -100,24 +100,24 @@ __END__
 
 =head1 NAME
 
-class -
+class - Define class using subroutine "class".
 
 =head1 SYNOPSIS
 
-  use class;
+use class;
 
-  class 'Foo' => (
-    bar => sub { 'baz' },
-  );
-  my $foo = Foo->new;
-  say $foo->bar; # baz
+class 'Foo' => (
+	bar => sub { 'baz' },
+);
+my $foo = Foo->new;
+say $foo->bar; # baz
 
-  class 'Hoo < Foo' => (
-    property => ['hoge'],
-  );
-  my $hoo = Hoo->new(hoge => 'fuga');
-	say $hoo->bar; # baz
-	say $hoo->hoge; # fuga
+class 'Hoo < Foo' => (
+	property => ['hoge'],
+);
+my $hoo = Hoo->new(hoge => 'fuga');
+say $hoo->bar; # baz
+say $hoo->hoge; # fuga
 
 =head1 DESCRIPTION
 
