@@ -1,6 +1,7 @@
 package class;
 use strict;
 use warnings;
+use Class::Load qw/ load_class /;
 
 our $VERSION = '0.01';
 
@@ -16,9 +17,9 @@ sub import {
 		my $klass = shift(@_);
 
 		# If class name contains "<",
-		$klass =~ s/(\w+)(?:\s*<\s*(\w+))?/$1/;
+		$klass =~ s/([\w:]+)(?:\s*<\s*([\w:]+))?/$1/;
 		# inherited.
-		push @{"$klass\::ISA"}, $2 if $2;
+		push(@{"$klass\::ISA"}, $2) && load_class($2) if $2;
 
 		# All class created by class.pm is child of "class" Class.
 		unshift @{"$klass\::ISA"}, "class";
@@ -32,13 +33,12 @@ sub import {
 
 			# Require perl-module.
 			if ($key eq 'require') {
-				$val =~ s!::!/!g;
-				require $val.'.pm';
+				load_class($val);
 			}
 
 			# Set parent class.
 			elsif ($key eq 'parent') {
-				push @{"$klass\::ISA"}, $val;
+				push(@{"$klass\::ISA"}, $val) && load_class($val);
 			}
 
 			# Set property method.

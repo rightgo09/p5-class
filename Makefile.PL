@@ -2,7 +2,7 @@ use inc::Module::Install;
 name 'class';
 all_from 'lib/class.pm';
 
-# requires '';
+requires 'Class::Load';
 
 tests 't/*.t';
 author_tests 'xt';
