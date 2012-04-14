@@ -13,6 +13,7 @@ sub import {
 	# Export "parent" subroutine.
 	*{"$pkg\::parent"} = \&_parent;
 
+	# Export "class" subroutine.
 	*{"$pkg\::class"} = sub {
 		my $klass = shift(@_);
 
